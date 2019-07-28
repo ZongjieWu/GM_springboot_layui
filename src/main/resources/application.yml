@@ -1,7 +1,7 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/tsqc?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/hdrc?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       username: root
       password: root
       initial-size: 1
@@ -17,29 +17,29 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
-  redis:
-    host: 119.23.211.214
-    port: 443
-    password: king123
-    jedis:
-      pool:
-        max-active: 100
-        max-idle: 10
-        max-wait: 100000
-    timeout: 5000
-    database: 0
+#  redis:
+#    host: 119.23.211.214
+#    port: 443
+#    password: king123
+#    jedis:
+#      pool:
+#        max-active: 100
+#        max-idle: 10
+#        max-wait: 100000
+#    timeout: 5000
+#    database: 0
 
 mybatis:
-  type-aliases-package: com.dslg.demo.mapper
+  type-aliases-package: com.wzj.springboot.dao
   mapper-locations: classpath:mapper/*.xml
 
-logging:
-  level:
-    com:
-      dslg:
-        demo:
-          mapper: debug
-shiro:
-  loginUrl: /login
-  userNativeSessionManager: true
+#logging:
+#  level:
+#    com:
+#      wzj:
+#        dao: debug
+
+#shiro:
+#  loginUrl: /login
+#  userNativeSessionManager: true
 
