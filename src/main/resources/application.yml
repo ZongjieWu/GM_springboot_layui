@@ -1,7 +1,7 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/hdrc?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/gm_springboot_layui?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       username: root
       password: root
       initial-size: 1
@@ -13,6 +13,7 @@ spring:
     prefix: classpath:/templates
     suffix: .html
     cache: false
+    check-template-location: true
     mode: LEGACYHTML5
     encoding: UTF-8
     servlet:
