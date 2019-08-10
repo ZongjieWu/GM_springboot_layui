@@ -1,6 +1,5 @@
-package com.wzj.springboot.config;
+package com.wzj.springboot.dao;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.common.BaseMapper;
 import tk.mybatis.mapper.common.ConditionMapper;

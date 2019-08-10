@@ -2,7 +2,7 @@ package com.wzj.springboot.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wzj.springboot.config.MyMapper;
+import com.wzj.springboot.dao.MyMapper;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
