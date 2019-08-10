@@ -90,11 +90,11 @@
 		<!--spring boot end-->
 
 		<!--&lt;!&ndash; alibaba begin&ndash;&gt;-->
-		<!--<dependency>-->
-			<!--<groupId>com.alibaba</groupId>-->
-			<!--<artifactId>druid-spring-boot-starter</artifactId>-->
-			<!--<version>${spring-boot-alibaba-druid.version}</version>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>${spring-boot-alibaba-druid.version}</version>
+		</dependency>
 		<!--&lt;!&ndash;阿里云oss&ndash;&gt;-->
 		<!--<dependency>-->
 			<!--<groupId>com.aliyun.oss</groupId>-->
@@ -132,7 +132,16 @@
 			<artifactId>mapper-spring-boot-starter</artifactId>
 			<version>${spring-boot-tk-mybatis.version}</version>
 		</dependency>
-
+		<!--<dependency>-->
+			<!--<groupId>org.mybatis</groupId>-->
+			<!--<artifactId>mybatis</artifactId>-->
+			<!--<version>3.4.1</version>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper</artifactId>
+			<version>3.4.3</version>
+		</dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -253,16 +262,6 @@
 
 		<!--代码自动生成相关依赖的包-->
 
-		<!--<dependency>-->
-		<!--<groupId>org.mybatis</groupId>-->
-		<!--<artifactId>mybatis</artifactId>-->
-		<!--<version>3.4.1</version>-->
-		<!--</dependency>-->
-		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper</artifactId>
-			<version>3.4.3</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -281,8 +280,6 @@
 			<version>1.3.5</version>
 			<scope>test</scope>
 		</dependency>
-
-
 
 
 	</dependencies>
