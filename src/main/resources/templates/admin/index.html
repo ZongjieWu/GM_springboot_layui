@@ -1,79 +1,342 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>后台登入 - 考勤管理系统</title>
+    <meta charset="utf-8">
+    <title>考勤管理系统</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="/static/common/image/hdrc.jpg" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-    <link href="/static/common/image/hdrc.jpgo" sizes="128x128" rel="shortcut icon" />
-    <link rel="stylesheet" href="<%=path%>/static/layuiadmin/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="<%=path%>/static/layuiadmin/style/admin.css" media="all">
-    <link id="layuicss-layer" rel="stylesheet" href="<%=path%>/static/layuiadmin/layui/css/modules/layer/default/layer.css" media="all">
-    <!--自己添加的-->
-    <link rel="stylesheet" href="<%=path%>/static/layuiadmin/style/login.css" media="all">
-    <style>
-        .layui-form-checkbox span{
-            height: 3%;
-        }
-    </style>
+    <link th:href="@{/static/common/image/hdrc.jpg}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+    <link th:href="@{/static/common/image/hdrc.jpgo}" sizes="128x128" rel="shortcut icon" />
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/style/admin.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/common/css/aliIconFont.css}" media="all">
 </head>
-<body layadmin-themealias="default">
+<body class="layui-layout-body">
 
-<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <!--<%&#45;&#45;<li class="layui-nav-item layui-hide-xs" lay-unselect>&#45;&#45;%>-->
+                <!--<%&#45;&#45;<a href="<%=path%>/webSite/findJob.html" target="_blank" title="前台">&#45;&#45;%>-->
+                    <!--<%&#45;&#45;<i class="layui-icon layui-icon-website"></i>&#45;&#45;%>-->
+                    <!--<%&#45;&#45;</a>&#45;&#45;%>-->
+                <!--<%&#45;&#45;</li>&#45;&#45;%>-->
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+                <!--<%&#45;&#45;<li class="layui-nav-item layui-hide-xs" lay-unselect>&#45;&#45;%>-->
+                <!--<%&#45;&#45;<input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search" layadmin-event="serach" lay-action="template/search.html?keywords=">&#45;&#45;%>-->
+                <!--<%&#45;&#45;</li>&#45;&#45;%>-->
+            </ul>
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
 
-    <div class="layadmin-user-login-main">
-        <div class="layadmin-user-login-box layadmin-user-login-header">
-            <h2>考勤后台管理系统</h2>
-            <p>Management System</p>
+                <!--<%&#45;&#45;<li class="layui-nav-item" lay-unselect>&#45;&#45;%>-->
+                <!--<%&#45;&#45;<a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">&#45;&#45;%>-->
+                    <!--<%&#45;&#45;<i class="layui-icon layui-icon-notice"></i>&#45;&#45;%>-->
+
+                    <!--<%&#45;&#45;&lt;!&ndash; 如果有新消息，则显示小圆点 &ndash;&gt;&#45;&#45;%>-->
+                    <!--<%&#45;&#45;<span class="layui-badge-dot"></span>&#45;&#45;%>-->
+                    <!--<%&#45;&#45;</a>&#45;&#45;%>-->
+                <!--<%&#45;&#45;</li>&#45;&#45;%>-->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="theme">
+                        <i class="layui-icon layui-icon-theme"></i>
+                    </a>
+                </li>
+                <!--<%&#45;&#45;<li class="layui-nav-item layui-hide-xs" lay-unselect>&#45;&#45;%>-->
+                <!--<%&#45;&#45;<a href="javascript:;" layadmin-event="note">&#45;&#45;%>-->
+                    <!--<%&#45;&#45;<i class="layui-icon layui-icon-note"></i>&#45;&#45;%>-->
+                    <!--<%&#45;&#45;</a>&#45;&#45;%>-->
+                <!--<%&#45;&#45;</li>&#45;&#45;%>-->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="fullscreen">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;">
+                        <cite>吴宗杰</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <%--<dd><a lay-href="<%=path%>/admin/jumpInfo">基本资料</a></dd>--%>
+                        <dd><a lay-href="<%=path%>/admin/jumpForget">修改密码</a></dd>
+                        <hr>
+                        <dd style="text-align: center;"><a href="<%=path%>/admin/logout">退出</a></dd>
+                    </dl>
+                </li>
+
+                <!--<%&#45;&#45;<li class="layui-nav-item layui-hide-xs" lay-unselect>&#45;&#45;%>-->
+                <!--<%&#45;&#45;<a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>&#45;&#45;%>-->
+                <!--<%&#45;&#45;</li>&#45;&#45;%>-->
+                <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                    <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                </li>
+            </ul>
         </div>
-        <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
-            <div class="layui-form-item">
-                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="phone"></label>
-                <input type="text" name="phone" id="phone" lay-verify="required" placeholder="手机号" class="layui-input">
+
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" lay-href="home/console.html">
+                    <span>考勤系统</span>
+                </div>
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+                    <!--<shiro:hasPermission name = "department/job">-->
+                        <li data-name="component" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="部门/职位" lay-direction="2">
+                                <i class="layui-icon iconfont iconbumen"></i>
+                                <cite>部门/职位</cite>
+                            </a>
+                            <!--<shiro:hasPermission name = "departmentManage">-->
+                                <dl class="layui-nav-child">
+                                    <dd><a lay-href="<%=path%>/department/jumpPaging">部门管理</a></dd>
+                                </dl>
+                            <!--</shiro:hasPermission>-->
+                            <!--<shiro:hasPermission name = "jobManage">-->
+                                <dl class="layui-nav-child">
+                                    <dd><a lay-href="<%=path%>/job/jumpPaging">职位管理</a></dd>
+                                </dl>
+                            <!--</shiro:hasPermission>-->
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "employeeManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="企业管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconrenyuanguanli"></i>
+                                <cite>人员管理</cite>
+                            </a>
+                            <!--<shiro:hasPermission name = "jobManage">-->
+                                <dl class="layui-nav-child">
+                                    <dd><a lay-href="<%=path%>/employee/jumpPaging">在职人员</a></dd>
+                                </dl>
+                            <!--</shiro:hasPermission>-->
+                            <!--<shiro:hasPermission name = "offEmployee">-->
+                                <dl class="layui-nav-child">
+                                    <dd><a lay-href="<%=path%>/employee/jumpDimissionPaging">离职员工</a></dd>
+                                </dl>
+                            <!--</shiro:hasPermission>-->
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "arrangeManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="简历管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconpaibanguanli"></i>
+                                <cite>排班管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "arrangeTime">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/arrangeTime/jumpPaging">排班时间</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "employeeArrange">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/arrangeDutyRules/jumpDepartmentPaging">员工排班</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "leaderArrange">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/arrangeDutyRules/jumpDepartmentLeaderPaging">干部排班</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "arrangeRecord">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/arrange/jumpEmployArrangePaging">排班记录</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "attendanceManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="考勤管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconkaoqinguanli"></i>
+                                <cite>考勤管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "holidayManage">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/holiday/jumpPaging">假期管理</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <dd>
+                                    <a lay-href="<%=path%>/dayOfDuty/jumpPaging">法定周末上班</a>
+                                </dd>
+                                <!--<shiro:hasPermission name = "punchCardRecord">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/attendanceRecord/jumpPaging">打卡记录</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "attendanceStatistics">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/attendanceRecord/jumpStatisticsPaging">考勤统计</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "reissueCardManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="补卡管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconbuka"></i>
+                                <cite>补卡管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "reissueCardReply">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/reissueReply/jumpPaging">补卡申请</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "reissueCardPass">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/reissueReply/jumpPassPaging">补卡通过</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "reissueCardUnPass">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/reissueReply/jumpUnPassPaging">补卡不通过</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "leaveManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a lay-href="javascript:;" lay-tips="请假管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconqingjiaguanli-"></i>
+                                <cite>请假管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "leaveType">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/leaveType/jumpPaging">请假类型</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "leaveSet">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/leaveSet/jumpPaging">请假设置</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "leaveCheck">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/empLeave/jumpPaging">请假审核</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "leavePass">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/empLeave/jumpPassPaging">审核通过</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "leaveUnPass">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/empLeave/jumpUnPassPaging">审核不通过</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "leaveInLieuManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="调休管理" lay-direction="2">
+                                <i class="layui-icon iconfont icontiaoxiushenqing"></i>
+                                <cite>调休管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "leaveInLieuRecord">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/leaveInLieu/jumpPaging">调休记录</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                    <!--<shiro:hasPermission name = "backPermissionManage">-->
+                        <li data-name="app" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="后台权限管理" lay-direction="2">
+                                <i class="layui-icon iconfont iconquanxianguanli"></i>
+                                <cite>后台权限管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <!--<shiro:hasPermission name = "managerManage">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/employeePermission/jumpManagerPaging">管理员</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "roleManage">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/employeePermission/jumpRolePaging">角色管理</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                                <!--<shiro:hasPermission name = "permissionManage">-->
+                                    <dd>
+                                        <a lay-href="<%=path%>/employeePermission/jumpPaging">权限管理</a>
+                                    </dd>
+                                <!--</shiro:hasPermission>-->
+                            </dl>
+                        </li>
+                    <!--</shiro:hasPermission>-->
+                </ul>
             </div>
-            <div class="layui-form-item">
-                <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="pwd"></label>
-                <input type="password" name="pwd" id="pwd" lay-verify="required" placeholder="密码" class="layui-input">
-            </div>
-            <%--<div class="layui-form-item">--%>
-            <%--<div class="layui-row">--%>
-                <%--<div class="layui-col-xs7">--%>
-                    <%--<label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>--%>
-                    <%--<input type="text" name="vercode" id="LAY-user-login-vercode" lay-verify="required" placeholder="图形验证码" class="layui-input">--%>
-                    <%--</div>--%>
-                <%--<div class="layui-col-xs5">--%>
-                    <%--<div style="margin-left: 10px;">--%>
-                        <%--<img src="<%=path%>/static/layuiadmin/captcha" class="layadmin-user-login-codeimg" id="LAY-user-get-vercode">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="layui-form-item" style="margin-bottom: 20px;">--%>
-            <%--<input type="checkbox" name="remember" lay-skin="primary" title="记住密码"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i class="layui-icon layui-icon-ok"></i></div>--%>
-            <%--<a href="<%=path%>/admin/jumpForgetPage" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>--%>
-            <%--</div>--%>
-            <div class="layui-form-item">
-                <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="LAY-user-login-submit">登 入</button>
-            </div>
-            <%--<div class="layui-trans layui-form-item layadmin-user-login-other">--%>
-            <%--<label>社交账号登入</label>--%>
-            <%--<a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>--%>
-            <%--<a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>--%>
-            <%--<a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>--%>
-            <%--<a href="<%=path%>/admin/jumpRegister" class="layadmin-user-jump-change layadmin-link">注册帐号</a>--%>
-            <%--</div>--%>
         </div>
+
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                            <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                            <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="home/console.html" lay-attr="home/console.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe th:src="@{/admin/jumpConsole}" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
     </div>
-
-    <div class="layui-trans layadmin-user-login-footer" style="position: static;">
-
-        <%--<p>© 2019 <a href="javascript:void(0);" target="_blank">ganzhouyouwo.com</a></p>--%>
-        <p>赣州优沃科技有限公司版权所有</p>
-        <p>推荐使用IE8以上浏览器</p>
-    </div>
-
 </div>
+<script th:src="@{/static/common/jquery.min.js}"></script>
+<script th:src="@{/static/layuiadmin/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer'], function(){
+        var form = layui.form;
+        var layer =layui.layer;
+        layui.config({
+            base: '/static/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index']);
 
-<script  th:src=="@{/static/common/js/jquery.min.js}"></script>
-<script  th:src=="@{/static/layuiadmin/layui/layui.js}"></script>
+    });
+</script>
+</body>
+</html>
+

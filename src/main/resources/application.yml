@@ -9,6 +9,8 @@ spring:
       max-active: 20
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    static-path-pattern: /static/**
   thymeleaf:
     prefix: classpath:/templates
     suffix: .html
@@ -33,6 +35,7 @@ spring:
 mybatis:
   type-aliases-package: com.wzj.springboot.dao.mapper
   mapper-locations: classpath:mapper/*.xml
+
 
 #logging:
 #  level:
