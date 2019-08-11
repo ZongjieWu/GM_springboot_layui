@@ -23,7 +23,7 @@ spring:
     servlet:
       content-type: text/html
 #  redis:
-#    host: 119.23.211.214
+#    host: 119.23.211.214e
 #    port: 443
 #    password: king123
 #    jedis:
