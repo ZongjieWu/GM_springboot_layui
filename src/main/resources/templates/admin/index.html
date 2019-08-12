@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <!--<%&#45;&#45;<li class="layui-nav-item layui-hide-xs" lay-unselect>&#45;&#45;%>-->
-                <!--<%&#45;&#45;<a href="<%=path%>/webSite/findJob.html" target="_blank" title="前台">&#45;&#45;%>-->
+                <!--<%&#45;&#45;<a href="/webSite/findJob.html" target="_blank" title="前台">&#45;&#45;%>-->
                     <!--<%&#45;&#45;<i class="layui-icon layui-icon-website"></i>&#45;&#45;%>-->
                     <!--<%&#45;&#45;</a>&#45;&#45;%>-->
                 <!--<%&#45;&#45;</li>&#45;&#45;%>-->
@@ -67,10 +67,10 @@
                         <cite>吴宗杰</cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <%--<dd><a lay-href="<%=path%>/admin/jumpInfo">基本资料</a></dd>--%>
-                        <dd><a lay-href="<%=path%>/admin/jumpForget">修改密码</a></dd>
+                        <!--<%&#45;&#45;<dd><a lay-href="/admin/jumpInfo">基本资料</a></dd>&#45;&#45;%>-->
+                        <dd><a lay-href="/admin/jumpForget">修改密码</a></dd>
                         <hr>
-                        <dd style="text-align: center;"><a href="<%=path%>/admin/logout">退出</a></dd>
+                        <dd style="text-align: center;"><a href="/admin/logout">退出</a></dd>
                     </dl>
                 </li>
 
@@ -98,12 +98,12 @@
                             </a>
                             <!--<shiro:hasPermission name = "departmentManage">-->
                                 <dl class="layui-nav-child">
-                                    <dd><a lay-href="<%=path%>/department/jumpPaging">部门管理</a></dd>
+                                    <dd><a lay-href="/department/jumpPaging">部门管理</a></dd>
                                 </dl>
                             <!--</shiro:hasPermission>-->
                             <!--<shiro:hasPermission name = "jobManage">-->
                                 <dl class="layui-nav-child">
-                                    <dd><a lay-href="<%=path%>/job/jumpPaging">职位管理</a></dd>
+                                    <dd><a lay-href="/job/jumpPaging">职位管理</a></dd>
                                 </dl>
                             <!--</shiro:hasPermission>-->
                         </li>
@@ -116,12 +116,12 @@
                             </a>
                             <!--<shiro:hasPermission name = "jobManage">-->
                                 <dl class="layui-nav-child">
-                                    <dd><a lay-href="<%=path%>/employee/jumpPaging">在职人员</a></dd>
+                                    <dd><a lay-href="/employee/jumpPaging">在职人员</a></dd>
                                 </dl>
                             <!--</shiro:hasPermission>-->
                             <!--<shiro:hasPermission name = "offEmployee">-->
                                 <dl class="layui-nav-child">
-                                    <dd><a lay-href="<%=path%>/employee/jumpDimissionPaging">离职员工</a></dd>
+                                    <dd><a lay-href="/employee/jumpDimissionPaging">离职员工</a></dd>
                                 </dl>
                             <!--</shiro:hasPermission>-->
                         </li>
@@ -135,22 +135,22 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "arrangeTime">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/arrangeTime/jumpPaging">排班时间</a>
+                                        <a lay-href="/arrangeTime/jumpPaging">排班时间</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "employeeArrange">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/arrangeDutyRules/jumpDepartmentPaging">员工排班</a>
+                                        <a lay-href="/arrangeDutyRules/jumpDepartmentPaging">员工排班</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "leaderArrange">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/arrangeDutyRules/jumpDepartmentLeaderPaging">干部排班</a>
+                                        <a lay-href="/arrangeDutyRules/jumpDepartmentLeaderPaging">干部排班</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "arrangeRecord">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/arrange/jumpEmployArrangePaging">排班记录</a>
+                                        <a lay-href="/arrange/jumpEmployArrangePaging">排班记录</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>
@@ -165,20 +165,20 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "holidayManage">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/holiday/jumpPaging">假期管理</a>
+                                        <a lay-href="/holiday/jumpPaging">假期管理</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <dd>
-                                    <a lay-href="<%=path%>/dayOfDuty/jumpPaging">法定周末上班</a>
+                                    <a lay-href="/dayOfDuty/jumpPaging">法定周末上班</a>
                                 </dd>
                                 <!--<shiro:hasPermission name = "punchCardRecord">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/attendanceRecord/jumpPaging">打卡记录</a>
+                                        <a lay-href="/attendanceRecord/jumpPaging">打卡记录</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "attendanceStatistics">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/attendanceRecord/jumpStatisticsPaging">考勤统计</a>
+                                        <a lay-href="/attendanceRecord/jumpStatisticsPaging">考勤统计</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>
@@ -193,17 +193,17 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "reissueCardReply">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/reissueReply/jumpPaging">补卡申请</a>
+                                        <a lay-href="/reissueReply/jumpPaging">补卡申请</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "reissueCardPass">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/reissueReply/jumpPassPaging">补卡通过</a>
+                                        <a lay-href="/reissueReply/jumpPassPaging">补卡通过</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "reissueCardUnPass">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/reissueReply/jumpUnPassPaging">补卡不通过</a>
+                                        <a lay-href="/reissueReply/jumpUnPassPaging">补卡不通过</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>
@@ -218,27 +218,27 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "leaveType">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/leaveType/jumpPaging">请假类型</a>
+                                        <a lay-href="/leaveType/jumpPaging">请假类型</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "leaveSet">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/leaveSet/jumpPaging">请假设置</a>
+                                        <a lay-href="/leaveSet/jumpPaging">请假设置</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "leaveCheck">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/empLeave/jumpPaging">请假审核</a>
+                                        <a lay-href="/empLeave/jumpPaging">请假审核</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "leavePass">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/empLeave/jumpPassPaging">审核通过</a>
+                                        <a lay-href="/empLeave/jumpPassPaging">审核通过</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "leaveUnPass">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/empLeave/jumpUnPassPaging">审核不通过</a>
+                                        <a lay-href="/empLeave/jumpUnPassPaging">审核不通过</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>
@@ -253,7 +253,7 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "leaveInLieuRecord">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/leaveInLieu/jumpPaging">调休记录</a>
+                                        <a lay-href="/leaveInLieu/jumpPaging">调休记录</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>
@@ -268,17 +268,17 @@
                             <dl class="layui-nav-child">
                                 <!--<shiro:hasPermission name = "managerManage">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/employeePermission/jumpManagerPaging">管理员</a>
+                                        <a lay-href="/manage/jumpPaging">管理员</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "roleManage">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/employeePermission/jumpRolePaging">角色管理</a>
+                                        <a lay-href="/role/jumpPaging">角色管理</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                                 <!--<shiro:hasPermission name = "permissionManage">-->
                                     <dd>
-                                        <a lay-href="<%=path%>/employeePermission/jumpPaging">权限管理</a>
+                                        <a lay-href="/permission/jumpPaging">权限管理</a>
                                     </dd>
                                 <!--</shiro:hasPermission>-->
                             </dl>

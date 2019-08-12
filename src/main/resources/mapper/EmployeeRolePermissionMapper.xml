@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzj.springboot.dao.mapper.EmployeeRolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.wzj.springboot.model.EmployeeRolePermission">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="employee_role_id" jdbcType="BIGINT" property="employeeRoleId" />
+    <result column="employee_permission_id" jdbcType="BIGINT" property="employeePermissionId" />
+    <result column="add_time" jdbcType="VARCHAR" property="addTime" />
+    <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
+  </resultMap>
+  <select id="listByRoleId" resultType="java.lang.Long">
+     select employee_permission_id from employee_role_permission
+     <where>
+       <if test="roleId!=null">
+         employee_role_id=#{roleId}
+       </if>
+     </where>
+  </select>
+</mapper>

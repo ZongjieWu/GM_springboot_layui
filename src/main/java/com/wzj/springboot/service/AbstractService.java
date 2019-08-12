@@ -70,6 +70,10 @@ public abstract class AbstractService<T> {
         mapper.deleteByIds(ids);
     }
 
+    public void deleteByWhere(T t) {
+        mapper.delete(t);
+    }
+
     public void update(T model) {
         mapper.updateByPrimaryKeySelective(model);
     }

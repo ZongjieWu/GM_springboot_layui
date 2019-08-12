@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzj.springboot.dao.mapper.EmployeePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.wzj.springboot.model.EmployeePermission">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="descript" jdbcType="VARCHAR" property="descript" />
+    <result column="request_path" jdbcType="VARCHAR" property="requestPath" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="add_time" jdbcType="VARCHAR" property="addTime" />
+    <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
+  </resultMap>
+  <select id="paging" resultType="java.util.HashMap">
+    select epp.name as parent_name,ep.* from employee_permission ep
+    left join employee_permission epp on ep.parent_id=epp.id
+    <where>
+      <if test="parentId!=null">
+        and ep.parent_id=#{parentId}
+      </if>
+      <if test="keywords!=null and !keywords.equals('')">
+        and ep.name like concat('%',#{keywords},'%')
+      </if>
+    </where>
+  </select>
+  <select id="idList" resultType="java.lang.Long">
+    select id from employee_permission
+  </select>
+</mapper>

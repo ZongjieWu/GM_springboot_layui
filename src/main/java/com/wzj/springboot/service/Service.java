@@ -65,6 +65,15 @@ public interface Service<T> {
     void deleteByIds(String ids);
 
     /**
+     * 根据条件做删除
+     *
+     * @param t
+     * @return
+     */
+    void deleteByWhere(T t);
+
+
+    /**
      * 更新
      * @param model
      */
