@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("/manage")
 public class ManageCatalog {
-    @GetMapping("jumpPaging")
+    @GetMapping("/jumpPaging")
     public String jumpManage(){
         return "/admin/permission/manage";
     }

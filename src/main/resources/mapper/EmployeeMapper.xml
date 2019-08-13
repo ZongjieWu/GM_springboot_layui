@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="wechat_public_openid" jdbcType="VARCHAR" property="wechatPublicOpenid" />
     <result column="job_number" jdbcType="VARCHAR" property="jobNumber" />
     <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
@@ -32,4 +32,100 @@
     <result column="add_time" jdbcType="VARCHAR" property="addTime" />
     <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
   </resultMap>
+  <select id="paging" resultType="java.util.HashMap">
+    select e.id,e.job_number,e.department_id,e.job_id,e.employee_role_id,e.head_img,e.name,
+    e.phone,e.email,e.addr,e.id_card,e.edu,e.native_place,e.nation,e.sex,e.marriage_status,
+    e.graduate_school,e.major,e.graduate_time,e.job_type,e.status,e.dimission_time,e.add_time,e.modify_time
+    ,d.name as department_name,j.name as job_name,er.name as employee_role_name from employee e
+    left join department d on split(e.department_id,',',length(e.department_id))=d.id
+    left join job j on e.job_id=j.id
+    left join employee_role er on e.employee_role_id=er.id
+    <where>
+      <if test="status!=null">
+        and e.status=#{status}
+      </if>
+      <if test="keywords!=null and !keywords.equals('')">
+        and (e.job_number like concat('%',#{keywords},'%') or e.name like concat('%',#{keywords},'%') or e.phone like concat('%',#{keywords},'%') or e.id_card like concat('%',#{keywords},'%'))
+      </if>
+      <if test="departmentId!=null and !departmentId.equals('')">
+        and e.department_id like concat('',#{departmentId},'%')
+      </if>
+
+      <if test="departmentParentId!=null">
+        and d.parent_id=#{departmentParentId} and if_leader=1
+      </if>
+    </where>
+  </select>
+  <select id="idByDepartmentId" resultType="java.lang.Long">
+      select e.id from employee e join job j on e.job_id=j.id
+      where e.department_id like concat('',#{departmentId},'%') and j.if_leader=#{ifLeader} and e.status=#{status}
+  </select>
+  <select id="idByJobId" resultType="java.lang.Long">
+    select e.id from employee e join job j on e.job_id=j.id
+    where e.job_id=#{jobId} and j.if_leader=#{ifLeader} and e.status=#{status}
+  </select>
+  <select id="allByStatusForSelect" resultType="java.util.HashMap">
+    select id,name,job_number from employee
+    <where>
+      <if test="status!=null">
+        status=#{status}
+      </if>
+    </where>
+  </select>
+  <select id="detail" resultType="java.util.HashMap">
+    select arrt.name as arrange_time_name,
+    a.arrange_name,
+    d.name as department_name,
+    j.name as job_name,er.name as employee_role_name,
+    j.if_leader,
+    e.id,e.job_number,e.department_id,e.job_id,e.employee_role_id,e.head_img,e.name,
+    e.phone,e.email,e.addr,e.id_card,e.edu,e.native_place,e.nation,e.sex,e.marriage_status,
+    e.graduate_school,e.major,e.graduate_time,e.job_type,e.status,e.dimission_time,e.add_time,e.modify_time
+    from employee e
+    left join department d on e.department_id=d.id
+    left join job j on e.job_id=j.id
+    left join employee_role er on e.employee_role_id=er.id
+    left join arrange a on a.employee_id=e.id and a.arrange_date=split(now(),' ',1)
+    left join arrange_time arrt on a.arrange_time_id=arrt.id
+    <where>
+      <if test="jobNumber!=null and !jobNumber.equals('')">
+        and e.job_number=#{jobNumber}
+      </if>
+    </where>
+  </select>
+  <select id="manageList" resultType="com.wzj.springboot.util.CamelKeyMap">
+    select e.id,e.name,e.job_number,e.phone,er.id as role_id,er.name as role_name from  employee e
+    join employee_role er
+    on e.employee_role_id=er.id
+    <where>
+      e.employee_role_id>=0
+      <if test="keywords!=null and !keywords.equals('')">
+         and (e.name like concat('%',#{keywords},'%') or e.job_number like concat('%',#{keywords},'%'))
+      </if>
+    </where>
+  </select>
+  <update id="deleteManage">
+    update employee set employee_role_id=null where id=#{id}
+  </update>
+  <select id="findRole" resultType="java.util.HashMap">
+    select er.id,er.name,er.descript from employee e join
+    employee_role er on e.employee_role_id=er.id
+    where e.phone=#{phone}
+  </select>
+  <select id="findPermission" resultType="java.util.HashMap">
+    select ep.id,ep.name,ep.descript from employee e
+    join employee_role er on e.employee_role_id=er.id
+    join employee_role_permission erp on erp.employee_role_id=er.id
+    join employee_permission ep on erp.employee_permission_id=ep.id
+    where e.phone=#{phone}
+  </select>
+  <select id="countEmployeeOnline" resultType="java.lang.Integer">
+    select count(*) from employee where status=0
+  </select>
+  <select id="findByWechatPublicOpenid" resultType="java.lang.Integer">
+    select count(id) from employee where wechat_public_openid=#{wechatPublicOpenid}
+  </select>
+  <select id="findJobNumberByWeChatPublicOpenid" resultType="java.lang.String">
+    select job_number from employee where wechat_public_openid=#{wechatPublicOpenid}
+  </select>
 </mapper>

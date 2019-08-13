@@ -46,8 +46,7 @@ server:
 #    com:
 #      wzj:
 #        dao: debug
-
-#shiro:
-#  loginUrl: /login
-#  userNativeSessionManager: true
+shiro:
+  loginUrl: /admin/jumpLogin
+  userNativeSessionManager: true
 

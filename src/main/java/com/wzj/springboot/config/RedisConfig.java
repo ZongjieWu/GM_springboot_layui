@@ -20,9 +20,9 @@ import java.lang.reflect.Method;
 /**
  * redis配置类
  */
-@Configuration
-@EnableCaching
-public class RedisConfig extends CachingConfigurerSupport {
+//@Configuration
+//@EnableCaching
+//public class RedisConfig extends CachingConfigurerSupport {
 //
 //    /**
 //     * 自定义生成key的规则
@@ -80,4 +80,4 @@ public class RedisConfig extends CachingConfigurerSupport {
 //        return template;
 //    }
 
-}
+//}

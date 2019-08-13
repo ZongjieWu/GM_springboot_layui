@@ -3,6 +3,9 @@ package com.wzj.springboot.web.controller;
 import com.wzj.springboot.enums.Result;
 import com.wzj.springboot.model.Employee;
 import com.wzj.springboot.service.service.EmployeeService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +32,7 @@ public class AdminController {
     @RequestMapping("login")
     public Map<String,Object> login(@NotNull @NotEmpty String phone, @NotNull @NotEmpty  String pwd, HttpSession session){
         try {
-//            Subject subject = SecurityUtils.getSubject();
+            Subject subject = SecurityUtils.getSubject();
             Map<String,Object> map=new HashMap<String,Object>();
             Employee employee=new Employee();
             employee.setPhone(phone);
@@ -41,7 +44,7 @@ public class AdminController {
                 return Result.retrunFailMsg("账号或密码错误");
             }else{
                 session.setAttribute("admin",e);
-//                subject.login(new UsernamePasswordToken(phone, pwd));
+                subject.login(new UsernamePasswordToken(phone, pwd));
                 return Result.retrunSucess();
             }
         }catch (Exception e){

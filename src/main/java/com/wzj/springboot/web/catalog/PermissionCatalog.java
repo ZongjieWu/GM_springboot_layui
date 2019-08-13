@@ -25,10 +25,6 @@ public class PermissionCatalog {
         return "/admin/permission/paging";
     }
 
-    @GetMapping("jumpUpdatePermission")
-    public String jumpUpdatePermission(){
-        return "/admin/permission/updatePermission";
-    }
 
 
 }

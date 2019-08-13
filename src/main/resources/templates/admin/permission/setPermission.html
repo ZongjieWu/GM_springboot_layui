@@ -1,14 +1,24 @@
-﻿<%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% String path=request.getContextPath();%>
-<!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>权限树扩展分享</title>
-    <link rel="stylesheet" href="<%=path%>/static/layuiadmin/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="<%=path%>/static/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/style/admin.css}" media="all">
+    <style>
+        .layui-form-checkbox span {
+            padding: 0 10px;
+            height: 4%;
+            font-size: 14px;
+            border-radius: 2px 0 0 2px;
+            background-color: #d2d2d2;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
+
 <body>
 <div class="layui-container">
     <div class="layui-row">
@@ -34,11 +44,11 @@
     </div>
 </div>
 </body>
-<script src="<%=path%>/static/common/jquery.min.js"></script>
-<script src="<%=path%>/static/layuiadmin/layui/layui.js"></script>
-<script type="text/javascript">
+<script th:src="@{/static/common/jquery.min.js}"></script>
+<script th:src="@{/static/layuiadmin/layui/layui.js}"></script>
+<script th:inline="javascript">
     layui.config({
-        base: '<%=path%>/static/layuiadmin/lib/extend/',
+        base: '/static/layuiadmin/lib/extend/',
     }).extend({
         authtree: 'authtree',
     }).use(['jquery', 'authtree', 'form', 'layer'], function(){
@@ -48,7 +58,7 @@
         var layer = layui.layer;
         // 初始化
         $.ajax({
-            url: '<%=path%>/employeePermission/listByRoleId?roleId='+'${roleId}',
+            url: '/permission/listByRoleId?roleId='+[[${roleId}]],
             dataType: 'json',
             type:'post',
             success: function(data){
@@ -116,11 +126,11 @@
             }
         });
         form.on('submit(LAY-auth-tree-submit)', function(obj){
-            var rid = '${roleId}';
+            var rid = [[${roleId}]];
             var authids = authtree.getChecked('#LAY-auth-tree-index');
             console.log('Choosed authids is', authids);
             $.ajax({
-                url: '<%=path%>/employeePermission/updatePermission',
+                url: '/permission/updatePermission',
                 dataType: 'json',
                 type:'post',
                 data: {rid:rid,authids:authids.toString()},
@@ -138,7 +148,7 @@
                             parent.closeAll();
                         },1000);
                     }else{
-                       layer.open({
+                        layer.open({
                             type: 1,
                             area: ['30%', '40%'],
                             fixed:false,

@@ -10,8 +10,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 
-@Configuration
-public class ValidatorConfiguration {
+//@Configuration
+//public class ValidatorConfiguration {
 //    @Bean
 //    public Validator validator() {
 //        ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)
@@ -30,4 +30,4 @@ public class ValidatorConfiguration {
 //        postProcessor.setValidator(validator());
 //        return postProcessor;
 //    }
-}
+//}
