@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
     <title>考勤管理系统</title>
@@ -64,7 +64,7 @@
                 </li>
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;">
-                        <cite>吴宗杰</cite>
+                        <cite th:text="${name}"></cite>
                     </a>
                     <dl class="layui-nav-child">
                         <!--<%&#45;&#45;<dd><a lay-href="/admin/jumpInfo">基本资料</a></dd>&#45;&#45;%>-->
@@ -90,200 +90,200 @@
                     <span>考勤系统</span>
                 </div>
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-                    <!--<shiro:hasPermission name = "department/job">-->
+                    <shiro:hasPermission name = "department/job">
                         <li data-name="component" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="部门/职位" lay-direction="2">
                                 <i class="layui-icon iconfont iconbumen"></i>
                                 <cite>部门/职位</cite>
                             </a>
-                            <!--<shiro:hasPermission name = "departmentManage">-->
+                            <shiro:hasPermission name = "departmentManage">
                                 <dl class="layui-nav-child">
                                     <dd><a lay-href="/department/jumpPaging">部门管理</a></dd>
                                 </dl>
-                            <!--</shiro:hasPermission>-->
-                            <!--<shiro:hasPermission name = "jobManage">-->
+                            </shiro:hasPermission>
+                            <shiro:hasPermission name = "jobManage">
                                 <dl class="layui-nav-child">
                                     <dd><a lay-href="/job/jumpPaging">职位管理</a></dd>
                                 </dl>
-                            <!--</shiro:hasPermission>-->
+                            </shiro:hasPermission>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "employeeManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "employeeManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="企业管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconrenyuanguanli"></i>
                                 <cite>人员管理</cite>
                             </a>
-                            <!--<shiro:hasPermission name = "jobManage">-->
+                            <shiro:hasPermission name = "jobManage">
                                 <dl class="layui-nav-child">
                                     <dd><a lay-href="/employee/jumpPaging">在职人员</a></dd>
                                 </dl>
-                            <!--</shiro:hasPermission>-->
-                            <!--<shiro:hasPermission name = "offEmployee">-->
+                            </shiro:hasPermission>
+                            <shiro:hasPermission name = "offEmployee">
                                 <dl class="layui-nav-child">
                                     <dd><a lay-href="/employee/jumpDimissionPaging">离职员工</a></dd>
                                 </dl>
-                            <!--</shiro:hasPermission>-->
+                            </shiro:hasPermission>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "arrangeManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "arrangeManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="简历管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconpaibanguanli"></i>
                                 <cite>排班管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "arrangeTime">-->
+                                <shiro:hasPermission name = "arrangeTime">
                                     <dd>
                                         <a lay-href="/arrangeTime/jumpPaging">排班时间</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "employeeArrange">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "employeeArrange">
                                     <dd>
                                         <a lay-href="/arrangeDutyRules/jumpDepartmentPaging">员工排班</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "leaderArrange">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "leaderArrange">
                                     <dd>
                                         <a lay-href="/arrangeDutyRules/jumpDepartmentLeaderPaging">干部排班</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "arrangeRecord">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "arrangeRecord">
                                     <dd>
                                         <a lay-href="/arrange/jumpEmployArrangePaging">排班记录</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "attendanceManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "attendanceManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="考勤管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconkaoqinguanli"></i>
                                 <cite>考勤管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "holidayManage">-->
+                                <shiro:hasPermission name = "holidayManage">
                                     <dd>
                                         <a lay-href="/holiday/jumpPaging">假期管理</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                                 <dd>
                                     <a lay-href="/dayOfDuty/jumpPaging">法定周末上班</a>
                                 </dd>
-                                <!--<shiro:hasPermission name = "punchCardRecord">-->
+                                <shiro:hasPermission name = "punchCardRecord">
                                     <dd>
                                         <a lay-href="/attendanceRecord/jumpPaging">打卡记录</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "attendanceStatistics">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "attendanceStatistics">
                                     <dd>
                                         <a lay-href="/attendanceRecord/jumpStatisticsPaging">考勤统计</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "reissueCardManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "reissueCardManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="补卡管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconbuka"></i>
                                 <cite>补卡管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "reissueCardReply">-->
+                                <shiro:hasPermission name = "reissueCardReply">
                                     <dd>
                                         <a lay-href="/reissueReply/jumpPaging">补卡申请</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "reissueCardPass">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "reissueCardPass">
                                     <dd>
                                         <a lay-href="/reissueReply/jumpPassPaging">补卡通过</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "reissueCardUnPass">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "reissueCardUnPass">
                                     <dd>
                                         <a lay-href="/reissueReply/jumpUnPassPaging">补卡不通过</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "leaveManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "leaveManage">
                         <li data-name="app" class="layui-nav-item">
                             <a lay-href="javascript:;" lay-tips="请假管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconqingjiaguanli-"></i>
                                 <cite>请假管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "leaveType">-->
+                                <shiro:hasPermission name = "leaveType">
                                     <dd>
                                         <a lay-href="/leaveType/jumpPaging">请假类型</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "leaveSet">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "leaveSet">
                                     <dd>
                                         <a lay-href="/leaveSet/jumpPaging">请假设置</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "leaveCheck">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "leaveCheck">
                                     <dd>
                                         <a lay-href="/empLeave/jumpPaging">请假审核</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "leavePass">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "leavePass">
                                     <dd>
                                         <a lay-href="/empLeave/jumpPassPaging">审核通过</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "leaveUnPass">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "leaveUnPass">
                                     <dd>
                                         <a lay-href="/empLeave/jumpUnPassPaging">审核不通过</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "leaveInLieuManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "leaveInLieuManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="调休管理" lay-direction="2">
                                 <i class="layui-icon iconfont icontiaoxiushenqing"></i>
                                 <cite>调休管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "leaveInLieuRecord">-->
+                                <shiro:hasPermission name = "leaveInLieuRecord">
                                     <dd>
                                         <a lay-href="/leaveInLieu/jumpPaging">调休记录</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
-                    <!--<shiro:hasPermission name = "backPermissionManage">-->
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name = "backPermissionManage">
                         <li data-name="app" class="layui-nav-item">
                             <a href="javascript:;" lay-tips="后台权限管理" lay-direction="2">
                                 <i class="layui-icon iconfont iconquanxianguanli"></i>
                                 <cite>后台权限管理</cite>
                             </a>
                             <dl class="layui-nav-child">
-                                <!--<shiro:hasPermission name = "managerManage">-->
+                                <shiro:hasPermission name = "managerManage">
                                     <dd>
                                         <a lay-href="/manage/jumpPaging">管理员</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "roleManage">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "roleManage">
                                     <dd>
                                         <a lay-href="/role/jumpPaging">角色管理</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
-                                <!--<shiro:hasPermission name = "permissionManage">-->
+                                </shiro:hasPermission>
+                                <shiro:hasPermission name = "permissionManage">
                                     <dd>
                                         <a lay-href="/permission/jumpPaging">权限管理</a>
                                     </dd>
-                                <!--</shiro:hasPermission>-->
+                                </shiro:hasPermission>
                             </dl>
                         </li>
-                    <!--</shiro:hasPermission>-->
+                    </shiro:hasPermission>
                 </ul>
             </div>
         </div>
@@ -334,7 +334,6 @@
         }).extend({
             index: 'lib/index' //主入口模块
         }).use(['index']);
-
     });
 </script>
 </body>
