@@ -1,8 +1,8 @@
 spring:
   datasource:
     druid:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/gm_springboot_layui?useUnicode=true&characterEncoding=UTF-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/gm_springboot_layui?useUnicode=true&characterEncoding=utf8&useSSL=false
       username: root
       password: root
       initial-size: 5
